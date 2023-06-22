@@ -1,14 +1,14 @@
 <script>
-import Test from "./components/Test.vue";
+// import Register from "./components/Register.vue";
 export default {
     components: {
-        Test,
+        // Register,
     }
 }
 </script>
 
 <template>
-  <Test />
+   <router-view></router-view>
 </template>
 
 <style>

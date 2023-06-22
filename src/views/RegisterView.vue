@@ -35,7 +35,7 @@ export default {
 <template>
   <section>
     <div class="form-container">
-      <h1>login form</h1>
+      <h1>註冊會員</h1>
       <form>
         <div class="control">
           <input
@@ -61,6 +61,7 @@ export default {
         <div class="control">
           <input class="submit" @click="handSubmit" value="Login" />
         </div>
+        <router-link to="/login" style="color:white">登入</router-link>
       </form>
     </div>
   </section>
