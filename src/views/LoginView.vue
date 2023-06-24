@@ -1,9 +1,11 @@
 
 <script>
-import { reactive } from "vue";
-import axios from "axios"
+import { reactive, ref } from "vue";
+import axios from "axios";
 export default {
   setup() {
+    const statusShow = ref(false);
+    const statusMsg = ref("");
     const registered = reactive({
       email: "",
       password: "",
@@ -12,19 +14,22 @@ export default {
     const handSubmit = () => {
       axios
         .post("http://localhost:8000/login", {
-         email:registered.email,
-         password:registered.password,
+          email: registered.email,
+          password: registered.password,
         })
-        .then( (response) => {
-          console.log(response);
+        .then((response) => {
+          statusShow.value = true;
+          statusMsg.value = response.data.result.status;
         })
-        .catch( (error) => {
+        .catch((error) => {
           console.log(error);
         });
     };
     return {
       registered,
       handSubmit,
+      statusShow,
+      statusMsg,
     };
   },
 };
@@ -33,9 +38,11 @@ export default {
 <template>
   <section>
     <div class="form-container">
-      <h1>登入會員</h1>
+      <h1>彩．壽司</h1>
       <form>
-        
+        <div class="status" v-if="statusShow">
+          <span>{{ statusMsg }}</span>
+        </div>
         <div class="control">
           <input
             type="text"
@@ -51,16 +58,16 @@ export default {
           />
         </div>
         <div class="control">
-          <input class="submit" @click="handSubmit" value="Login" />
+          <input class="submit" @click="handSubmit" value="登入" />
         </div>
-        <router-link to="/register" style="color:white">註冊</router-link>
+        <router-link to="/register" style="color: white">註冊</router-link>
       </form>
     </div>
   </section>
 </template>
 
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
@@ -98,13 +105,14 @@ h1 {
   font-size: 2em;
   text-align: center;
   margin-bottom: 2em;
+  color: #fff;
 }
 
 .control input {
   width: 100%;
   display: block;
   padding: 10px;
-  color: #000;
+  /* color: #000; */
   border: none;
   outline: none;
   margin: 1em 0;
@@ -112,15 +120,29 @@ h1 {
 }
 
 .submit {
-  background: crimson;
+  background: #7a816e;
   color: #fff;
   text-transform: uppercase;
   font-size: 1.2em;
   opacity: 0.7;
   transform: opacity 0.3s ease;
+  text-align: center;
 }
 
 .submit:hover {
   opacity: 1;
+}
+
+.status {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  margin: 1em 0;
+  border-radius: 5px;
+  background-color: #ffffff2d;
+  text-align: center;
 }
 </style>
