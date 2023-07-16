@@ -2,17 +2,18 @@
 <script>
 import Header from "@/components/Header.vue";
 import Main from "@/components/home/Main.vue";
+import Bread from "@/components/home/Bread.vue";
 export default {
   components: {
     Header,
     Main,
+    Bread
   },
 };
 </script>
 
 <template>
   <Header />
-  <Main />
 
   <main>
     <article>article</article>
