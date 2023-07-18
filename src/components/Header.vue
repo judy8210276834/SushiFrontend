@@ -1,15 +1,13 @@
-
 <script>
 export default {};
 </script>
-
 
 <template>
   <nav>
     <input type="checkbox" id="check" />
     <label for="check" class="checkbtn">
       <!-- explicit style -->
-      <font-awesome-icon :icon="['fas', 'bars']" />
+      <font-awesome-icon style="color:#7a816e" :icon="['fas', 'bars']" />
     </label>
     <label class="logo">彩·壽司</label>
     <ul>
@@ -20,7 +18,6 @@ export default {};
   </nav>
 </template>
 
-
 <style scoped lang="scss">
 * {
   text-decoration: none;
@@ -29,22 +26,26 @@ export default {};
 }
 
 nav {
-  background-color: rgba(80, 80, 80, 1);
+  background-color: rgba(255, 255, 255, 0.758);
   height: 70px;
   width: 100%;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  z-index: 99;
 }
 
 label.logo {
   color: #7a816e;
   font-size: 35px;
-  line-height: 80px;
+  line-height: 70px;
   padding: 0 100px;
-  font-weight: bold;
+  // font-weight: bold;
   @media (max-width: 952px) {
     font-size: 30px;
     padding-left: 50px;
   }
 }
+
 
 nav ul {
   float: right;
@@ -53,7 +54,7 @@ nav ul {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #2c3e50;
+    background: #7a816e;
     top: 70px;
     left: -100%;
     text-align: center;
@@ -61,7 +62,7 @@ nav ul {
   }
   li {
     display: inline-block;
-    line-height: 80px;
+    line-height: 70px;
     margin: 0 5px;
 
     @media (max-width: 858px) {
@@ -69,7 +70,7 @@ nav ul {
     }
 
     a {
-      color: #ffffff;
+      color: #505050;
       font-size: 17px;
       text-transform: uppercase;
       padding: 7px 13px;
@@ -80,6 +81,7 @@ nav ul {
 
       @media (max-width: 858px) {
         font-size: 20px;
+        color: #ffffff;
       }
 
       &:hover,
@@ -87,7 +89,7 @@ nav ul {
         opacity: 0.7;
         @media (max-width: 858px) {
           background: none;
-          color: #0082e6;
+          color: #7a816e;
         }
       }
     }
@@ -98,7 +100,7 @@ nav ul {
   font-size: 30px;
   color: white;
   float: right;
-  line-height: 80px;
+  line-height: 70px;
   margin-right: 40px;
   cursor: pointer;
   display: none;

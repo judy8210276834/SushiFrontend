@@ -1,27 +1,26 @@
-
 <script>
 import Header from "@/components/Header.vue";
 import Main from "@/components/home/Main.vue";
 import Bread from "@/components/home/Bread.vue";
+import Category from "@/components/home/Category.vue";
 export default {
   components: {
     Header,
     Main,
-    Bread
+    Bread,
+    Category,
   },
 };
 </script>
 
 <template>
   <Header />
+  <Main />
+  <Category />
 
-  <main>
-    <article>article</article>
-    <aside>aside</aside>
-  </main>
+  
   <footer>footer<time></time></footer>
 </template>
-
 
 <style lang="scss">
 * {
@@ -29,4 +28,3 @@ export default {
   margin: 0;
 }
 </style>
-
