@@ -11,9 +11,10 @@ export default {};
     </label>
     <label class="logo">彩·壽司</label>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contect</a></li>
+      <li><router-link to="/register">註冊</router-link></li>
+      <li><a href="#">會員資訊</a></li>
+      <li><router-link to="/cart">我的購物車</router-link></li>
+      <li><a href="#">MENU</a></li>
     </ul>
   </nav>
 </template>

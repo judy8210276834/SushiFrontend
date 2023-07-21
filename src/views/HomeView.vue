@@ -16,15 +16,22 @@ export default {
 <template>
   <Header />
   <Main />
-  <Category />
+  <dic class="container">
+    <Category />
+  </dic>
 
-  
   <footer>footer<time></time></footer>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 * {
   padding: 0;
   margin: 0;
+}
+
+.container {
+  max-width: 1080px; 
+	margin: 0 auto !important; 
+	float: none !important; 
 }
 </style>
