@@ -1,14 +1,25 @@
 <script>
+import items from "../data/items.js";
+
 import Header from "@/components/Header.vue";
 import Main from "@/components/home/Main.vue";
 import Bread from "@/components/home/Bread.vue";
 import Category from "@/components/home/Category.vue";
+import Card from "@/components/home/Card.vue";
+import { onMounted } from "vue";
 export default {
   components: {
     Header,
     Main,
     Bread,
     Category,
+    Card,
+  },
+
+  data() {
+    return {
+      items,
+    };
   },
 };
 </script>
@@ -16,9 +27,13 @@ export default {
 <template>
   <Header />
   <Main />
-  <dic class="container">
+  <div class="container">
     <Category />
-  </dic>
+
+    <div class="product-cards-container">
+      <Card v-for="product in items" :key="product.id" :product="product" />
+    </div>
+  </div>
 
   <footer>footer<time></time></footer>
 </template>
@@ -30,8 +45,14 @@ export default {
 }
 
 .container {
-  max-width: 1080px; 
-	margin: 0 auto !important; 
-	float: none !important; 
+  max-width: 1080px;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.product-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>

@@ -1,28 +1,17 @@
 
 <script>
-import items from "../data/item.js";
-
+import { onMounted } from "vue";
 export default {
-    setup(){
-
-        return {
-            items
-        }
-    }
-}
+  props: ["product"],
+};
 </script>
 
 <template>
-  <div class="product-cards-container">
-
+  <div class="card">
+    <h3>{{ product.name }}</h3>
   </div>
 </template>
 
 
 <style scoped lang="scss">
-    .product-cards-container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 </style>
