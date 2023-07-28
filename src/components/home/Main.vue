@@ -28,7 +28,8 @@ export default {};
 .main-image {
   background: url(~@/images/banner.jpg) no-repeat center;
   background-size: cover;
-  height: 800px;
+  height:auto;
+  min-height: 93vh;
   width: 100%;
   overflow: hidden;
   position: relative;

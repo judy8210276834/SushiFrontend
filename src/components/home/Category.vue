@@ -1,7 +1,10 @@
 <script>
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
 export default {
   setup() {
+    const store = useStore();
     const categoryArr = reactive([
       { name: "生魚片" },
       { name: "捲類" },
@@ -10,6 +13,8 @@ export default {
       { name: "飲料、甜點" },
     ]);
 
+    
+
     return { categoryArr };
   },
 };
@@ -17,9 +22,9 @@ export default {
 
 <template>
   <section class="container">
-    <div class="card" v-for="(item, idx) in categoryArr" :key='idx' >
+    <div class="card" v-for="(item, idx) in categoryArr" :key="idx">
       <div class="card-image"></div>
-      <p>{{item.name}}</p>
+      <p>{{ item.name }}</p>
     </div>
   </section>
 </template>
