@@ -1,46 +1,67 @@
 import { createStore } from "vuex";
 
+function updateLocalStorage(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 export default createStore({
   state: {
     cart: [],
-    cartTotal: 0,
   },
-  getters: {},
+  getters: {
+    productQuantity: (state) => (product) => {
+      const item = state.cart.find((i) => i.id === product.id)
+
+      if (item) return item.quantity
+      else return null
+    }
+  },
   mutations: {
-    addRemoveCart(state, payload) {
-      console.log("addRemoveCart");
-      // payload.toAdd
-      //   ? state.cart.push(payload.product)
-      //   : (state.cart = state.cart.filter(function (obj) {
-      //       return obj.id !== payload.product.id;
-      //     }));
-      // state.cartTotal = state.cart.reduce((accumulator, object) => {
-      //   return parseFloat(accumulator) + parseFloat(object.price * object.qty);
-      // });
-      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
-      // localStorage.setItem('cartTotal',JSON.stringify(state.cart));
-      // console.log(state.cartTotal);
-      // console.log(state.cart);
+    addToCart(state, product) {
+      console.log("addToCart");
+      let item = state.cart.find((i) => i.id === product.id);
+
+      if (item) {
+        item.quantity++;
+      } else {
+        state.cart.push({ ...product, quantity: 1 });
+      }
+
+      updateLocalStorage(state.cart);
     },
-    updateCart(state, payload) {
-      console.log("updateCart");
-      // state.cart.find(o => o.id === payload.product.id).qty = payload.product.qty;
-      // state.cartTotal = state.cart.reduce((accumulator, object) => {
-      //   return parseFloat(accumulator) + parseFloat(object.price * object.qty);
-      // });
-      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
-      // localStorage.setItem('cartTotal',JSON.stringify(state.cart));
-      // console.log(state.cartTotal);
-      // console.log(state.cart);
+    removeFromCart(state, product) {
+      console.log("removeFromCart");
+      let item = state.cart.find((i) => i.id === product.id);
+
+      if (item) {
+        if (item.quantity > 1) {
+          item.quantity--;
+        } else {
+          state.cart = state.cart.filter((i) => i.id !== product.id);
+        }
+      }
+
+      updateLocalStorage(state.cart);
+    },
+    updateCartFromLocalStorage(state, payload) {
+      console.log("updateCartFromLocalStorage");
+      const cart = localStorage.getItem("cart");
+      if (cart) {
+        state.cart = JSON.parse(cart);
+      }
     },
   },
   actions: {
-    handAddRemoveCart({ commit }) {
-      commit("addRemoveCart");
+    handAddToCart({ commit }, payload) {
+      commit("addToCart", payload.product);
     },
-    handUpdateCart({ commit }, payload) {
+    handRemoveFromCart({ commit }, payload) {
       // console.log(payload.products);
-      commit("updateCart");
+      commit("removeFromCart", payload.product);
+    },
+    handUpdateCartFromLocalStorage({ commit }, payload) {
+      // console.log(payload.products);
+      commit("updateCartFromLocalStorage");
     },
   },
   modules: {},

@@ -1,45 +1,35 @@
 <script>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 export default {
   props: ["product"],
 
   setup(props) {
     const store = useStore();
-    const qty = ref(1);
-    const loading = ref(false);
-    const toAdd = ref(true);
-    // const init = () => {
-    //   store.dispatch("handAddRemoveCart");
-    // };
 
     onMounted(() => {
       // init();
+      // console.log(store.getters.productQuantity(props.product));
     });
 
-    const addOrRemove = async (number) => {
-      loading.value = true;
-      if (number == 1) {
-        if (qty.value < 10) {
-          qty.value++;
-          props.product.qty = qty.value;
-          console.log(props.product);
-          store.dispatch("handUpdateCart", {
-            product: props.product,
-          });
-
-          // await this.$store.commit('updateCart',{product:props.product})
-          // toast.success('ok');
-        } else {
-          // toast.warning('limit');
-        }
-      }
+    const addToCart = () => {
+      store.dispatch("handAddToCart", {
+        product: props.product,
+      });
     };
 
-    return {
-      addOrRemove,
-      qty,
+    const removeFromCart = () => {
+      store.dispatch("handRemoveFromCart", {
+        product: props.product,
+      });
     };
+
+  
+    const product_total = computed(() => {
+      return store.getters.productQuantity(props.product) === null ? 0 : store.getters.productQuantity(props.product);
+    });
+
+    return { addToCart, removeFromCart, product_total };
   },
 };
 </script>
@@ -50,9 +40,9 @@ export default {
     <h3>{{ product.name }}</h3>
     <h5 class="price">{{ product.price }}</h5>
     <div class="counter">
-      <div class="minus">-</div>
-      <div class="count">{{ qty }}</div>
-      <div class="plus" @click="addOrRemove(1)">+</div>
+      <div class="minus" @click="removeFromCart">-</div>
+      <div class="count">{{ product_total }}</div>
+      <div class="plus" @click="addToCart">+</div>
     </div>
   </div>
 </template>
