@@ -27,6 +27,7 @@ export default {};
 
 .main-image {
   background: url(~@/images/banner.jpg) no-repeat center;
+  background-color: gray;
   background-size: cover;
   height:auto;
   min-height: 93vh;

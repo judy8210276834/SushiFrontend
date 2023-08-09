@@ -13,20 +13,20 @@ export default {
     });
 
     const addToCart = () => {
-      store.dispatch("handAddToCart", {
+      store.dispatch("Product/handAddToCart", {
         product: props.product,
       });
     };
 
     const removeFromCart = () => {
-      store.dispatch("handRemoveFromCart", {
+      store.dispatch("Product/handRemoveFromCart", {
         product: props.product,
       });
     };
 
   
     const product_total = computed(() => {
-      return store.getters.productQuantity(props.product) === null ? 0 : store.getters.productQuantity(props.product);
+      return store.getters['Product/productQuantity'](props.product) === null ? 0 : store.getters['Product/productQuantity'](props.product)
     });
 
     return { addToCart, removeFromCart, product_total };
@@ -37,6 +37,7 @@ export default {
 <template>
   <div class="card">
     <img src="@/images/sushi/1.jpg" alt="" />
+    <!-- <img src="" alt="" /> -->
     <h3>{{ product.name }}</h3>
     <h5 class="price">{{ product.price }}</h5>
     <div class="counter">
@@ -51,6 +52,10 @@ export default {
 img {
   width: 100%; /* or any custom size */
   object-fit: contain;
+
+  // 暫時灰色底
+  // background-color: gray;
+  // height: 100px;
 }
 
 .card {

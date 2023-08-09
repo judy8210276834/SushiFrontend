@@ -2,10 +2,11 @@
 import items from "../data/items.js";
 
 import Header from "@/components/Header.vue";
-import Main from "@/components/home/Main.vue";
-import Bread from "@/components/home/Bread.vue";
-import Category from "@/components/home/Category.vue";
-import Card from "@/components/home/Card.vue";
+import Footer from "@/components/Footer.vue";
+import Main from "@/components/product/Main.vue";
+import Bread from "@/components/product/Bread.vue";
+import Category from "@/components/product/Category.vue";
+import Card from "@/components/product/Card.vue";
 import { onMounted } from "vue";
 export default {
   components: {
@@ -14,6 +15,7 @@ export default {
     Bread,
     Category,
     Card,
+    Footer,
   },
 
   setup() {
@@ -35,11 +37,14 @@ export default {
       <Card v-for="product in items" :key="product.id" :product="product" />
     </div>
   </div>
+  <footer>
+    <Footer />
+  </footer>
+  
 
-  <footer>footer<time></time></footer>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
 * {
   padding: 0;
   margin: 0;
@@ -56,5 +61,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+footer{
+  margin-top: 10%;
 }
 </style>
