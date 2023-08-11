@@ -1,11 +1,15 @@
 export default {
-    productQuantity: (state) => (product) => {
-        const item = state.cart.find((i) => i.id === product.id);
-  
-        if (item) return item.quantity;
-        else return null;
-      },
-      test: (state) => {
-        return "ok";
-      },
-}
+  productQuantity: (state) => (product) => {
+    const item = state.cart.find((i) => i.id === product.id);
+
+    if (item) return item.quantity;
+    else return null;
+  },
+
+  getCart: (state) => {
+    const item = state.cart;
+    console.log(item);
+    if (item === {}) return "null";
+    else return "!null";
+  },
+};

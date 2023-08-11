@@ -8,8 +8,7 @@ export default {
     const store = useStore();
 
     onMounted(() => {
-      // init();
-      // console.log(store.getters.productQuantity(props.product));
+      console.log(props.product);
     });
 
     const addToCart = () => {

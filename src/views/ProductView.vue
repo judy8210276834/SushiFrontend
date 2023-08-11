@@ -8,6 +8,8 @@ import Bread from "@/components/product/Bread.vue";
 import Category from "@/components/product/Category.vue";
 import Card from "@/components/product/Card.vue";
 import { onMounted } from "vue";
+import { useStore } from "vuex";
+
 export default {
   components: {
     Header,
@@ -19,6 +21,15 @@ export default {
   },
 
   setup() {
+    const store = useStore();
+    const init = () => {
+      store.dispatch("Product/handUpdateCartFromLocalStorage");
+    };
+
+    onMounted(() => {
+      init();
+    });
+    
     return {
       items,
     };
@@ -40,11 +51,9 @@ export default {
   <footer>
     <Footer />
   </footer>
-  
-
 </template>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 * {
   padding: 0;
   margin: 0;
@@ -63,7 +72,7 @@ export default {
   justify-content: center;
 }
 
-footer{
+footer {
   margin-top: 10%;
 }
 </style>
