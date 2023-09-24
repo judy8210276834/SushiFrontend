@@ -7,7 +7,7 @@ import Main from "@/components/product/Main.vue";
 import Bread from "@/components/product/Bread.vue";
 import Category from "@/components/product/Category.vue";
 import Card from "@/components/product/Card.vue";
-import { onMounted } from "vue";
+import { computed, onMounted, reactive } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -21,17 +21,26 @@ export default {
   },
 
   setup() {
+    const food = reactive({data:[]})
     const store = useStore();
     const init = () => {
       store.dispatch("Product/handUpdateCartFromLocalStorage");
+      store.dispatch("Product/handSetFoodData").then((res)=>{
+        console.log('3',res);
+        food.data = res;
+        console.log(food.data);
+      });
+      // console.log('here',store.state.Product.card);
+      
     };
 
     onMounted(() => {
       init();
     });
-    
+
     return {
       items,
+      food
     };
   },
 };
@@ -45,7 +54,7 @@ export default {
     <Category />
 
     <div class="product-cards-container">
-      <Card v-for="product in items" :key="product.id" :product="product" />
+      <Card v-for="product in food.data" :key="product._id" :product="product" />
     </div>
   </div>
   <footer>
@@ -61,7 +70,7 @@ export default {
 }
 
 .container {
-  max-width: 1080px;
+  max-width: 980px;
   margin: 0 auto !important;
   float: none !important;
 }

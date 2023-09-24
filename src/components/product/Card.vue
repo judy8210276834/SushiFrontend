@@ -8,7 +8,7 @@ export default {
     const store = useStore();
 
     onMounted(() => {
-      console.log(props.product);
+      // console.log(props.product);
     });
 
     const addToCart = () => {
@@ -28,14 +28,20 @@ export default {
       return store.getters['Product/productQuantity'](props.product) === null ? 0 : store.getters['Product/productQuantity'](props.product)
     });
 
-    return { addToCart, removeFromCart, product_total };
+    const imgUrl = (imagePath) => {
+    return '@/images/nigiri/'+imagePath;
+  }
+
+    return { addToCart, removeFromCart, product_total,imgUrl };
   },
 };
 </script>
 
 <template>
   <div class="card">
-    <img src="@/images/sushi/1.jpg" alt="" />
+    <!-- <img :src="imgUrl(product.img_name)" alt="" /> -->
+    <img :src="require(`@/images/nigiri/${product.img_name}`)" alt="" />
+    <!-- <img src="@/images/nigiri/3.jpg" alt="" /> -->
     <!-- <img src="" alt="" /> -->
     <h3>{{ product.name }}</h3>
     <h5 class="price">{{ product.price }}</h5>

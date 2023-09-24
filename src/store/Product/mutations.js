@@ -33,7 +33,10 @@ export default {
       state.cart = JSON.parse(cart);
     }
   },
-  
+
+  setFoodData(state, payload) {
+    state.card = payload;
+  },
 };
 
 function updateLocalStorage(cart) {

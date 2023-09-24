@@ -2,7 +2,10 @@ import { createStore } from "vuex";
 import Product from "./Product";
 
 export default createStore({
-  state: {},
+  namespaced: true,
+  state: {
+    boo1:false,
+  },
   getters: {},
   mutations: {},
   actions: {},
