@@ -11,7 +11,7 @@ export default {};
 
 <style scoped lang="scss">
 span {
-  width: 95%;
+  // width: 95%;
   margin: auto;
   min-height: 70px;
   display: flex;

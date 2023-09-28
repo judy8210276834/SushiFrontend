@@ -3,8 +3,8 @@ import items from "../data/items.js";
 
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import Main from "@/components/product/Main.vue";
-import Bread from "@/components/product/Bread.vue";
+import Main from "@/components/Main.vue";
+import Bread from "@/components/Bread.vue";
 import Category from "@/components/product/Category.vue";
 import Card from "@/components/product/Card.vue";
 import { computed, onMounted, reactive } from "vue";
