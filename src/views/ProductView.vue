@@ -21,17 +21,18 @@ export default {
   },
 
   setup() {
-    const food = reactive({data:[]})
+    const food = reactive({ data: [] });
     const store = useStore();
+    const img_url = "banner.jpg";
+
     const init = () => {
       store.dispatch("Product/handUpdateCartFromLocalStorage");
-      store.dispatch("Product/handSetFoodData").then((res)=>{
-        console.log('3',res);
+      store.dispatch("Product/handSetFoodData").then((res) => {
+        console.log("3", res);
         food.data = res;
         console.log(food.data);
       });
       // console.log('here',store.state.Product.card);
-      
     };
 
     onMounted(() => {
@@ -40,7 +41,8 @@ export default {
 
     return {
       items,
-      food
+      food,
+      img_url,
     };
   },
 };
@@ -48,13 +50,17 @@ export default {
 
 <template>
   <Header />
-  <Main />
+  <Main :img_url="img_url" />
   <div class="container">
     <Bread />
     <Category />
 
     <div class="product-cards-container">
-      <Card v-for="product in food.data" :key="product._id" :product="product" />
+      <Card
+        v-for="product in food.data"
+        :key="product._id"
+        :product="product"
+      />
     </div>
   </div>
   <footer>
