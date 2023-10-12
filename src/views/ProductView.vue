@@ -26,12 +26,17 @@ export default {
     const img_url = "banner.jpg";
 
     const init = () => {
-      store.dispatch("Product/handUpdateCartFromLocalStorage");
-      store.dispatch("Product/handSetFoodData").then((res) => {
-        console.log("3", res);
-        food.data = res;
-        console.log(food.data);
-      });
+      // api資料
+      // store.dispatch("Product/handUpdateCartFromLocalStorage");
+      // store.dispatch("Product/handSetFoodData").then((res) => {
+      //   console.log("3", res);
+      //   food.data = res;
+      //   console.log(food.data);
+      // });
+
+      // 假資料
+      food.data = items;
+
       // console.log('here',store.state.Product.card);
     };
 
@@ -56,9 +61,14 @@ export default {
     <Category />
 
     <div class="product-cards-container">
-      <Card
+      <!-- <Card
         v-for="product in food.data"
         :key="product._id"
+        :product="product"
+      /> -->
+      <Card
+        v-for="product in food.data"
+        :key="product.id"
         :product="product"
       />
     </div>
