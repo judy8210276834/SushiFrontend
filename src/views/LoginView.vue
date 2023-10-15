@@ -1,4 +1,3 @@
-
 <script>
 import { reactive, ref } from "vue";
 import axios from "axios";
@@ -20,6 +19,9 @@ export default {
         .then((response) => {
           statusShow.value = true;
           statusMsg.value = response.data.result.status;
+          if (statusMsg.value == "登入成功。") {
+            location.href="/";
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -65,7 +67,6 @@ export default {
     </div>
   </section>
 </template>
-
 
 <style scoped>
 * {

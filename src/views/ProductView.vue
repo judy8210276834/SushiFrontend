@@ -27,17 +27,24 @@ export default {
 
     const init = () => {
       // api資料
-      // store.dispatch("Product/handUpdateCartFromLocalStorage");
-      // store.dispatch("Product/handSetFoodData").then((res) => {
-      //   console.log("3", res);
-      //   food.data = res;
-      //   console.log(food.data);
-      // });
+      store.dispatch("Product/handUpdateCartFromLocalStorage");
+      store.dispatch("Product/handSetFoodData", { type: 1 }).then((res) => {
+        // console.log("3", res);
+        food.data = res;
+        // console.log('ProductView:',food.data);
+      });
 
       // 假資料
-      food.data = items;
+      // food.data = items;
 
-      // console.log('here',store.state.Product.card);
+      console.log('here',store.state.Product.cart);
+    };
+
+    const changeTypeApi = (n) => {
+      store.dispatch("Product/handUpdateCartFromLocalStorage");
+      store.dispatch("Product/handSetFoodData", { type: n }).then((res) => {
+        food.data = res;
+      });
     };
 
     onMounted(() => {
@@ -48,6 +55,7 @@ export default {
       items,
       food,
       img_url,
+      changeTypeApi
     };
   },
 };
@@ -58,7 +66,7 @@ export default {
   <Main :img_url="img_url" />
   <div class="container">
     <Bread />
-    <Category />
+    <Category :changeTypeApi="changeTypeApi"/>
 
     <div class="product-cards-container">
       <!-- <Card
@@ -68,7 +76,7 @@ export default {
       /> -->
       <Card
         v-for="product in food.data"
-        :key="product.id"
+        :key="product._id"
         :product="product"
       />
     </div>

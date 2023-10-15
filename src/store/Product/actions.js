@@ -10,13 +10,24 @@ export default {
     commit("updateCartFromLocalStorage");
   },
   handSetFoodData({ commit }, payload) {
-    return axios.get('http://localhost:8000/product?gid=3')
-    .then((res)=>{
-      // console.log('action');
-      commit("setFoodData",res.data.result);
-      return res.data.result;
-    })
-    .catch((err)=>{console.log(err);});
-    
+    console.log("payload", payload.type);
+
+    return axios
+      .get("http://localhost:8000/product?gid=" + payload.type)
+      .then((res) => {
+        // console.log('action');
+        console.log(res.data.result);
+        commit("setFoodData", res.data.result);
+        return res.data.result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+
+
+  // 清空
+  resetCartState ({ commit }) {
+    commit('resetState')
   },
 };

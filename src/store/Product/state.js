@@ -1,5 +1,5 @@
 export default {
   cart: [],
-  card: [],
+  foodArr: [],
   boo:false,
 };

@@ -23,16 +23,17 @@ export default {
       });
     };
 
-  
     const product_total = computed(() => {
-      return store.getters['Product/productQuantity'](props.product) === null ? 0 : store.getters['Product/productQuantity'](props.product)
+      return store.getters["Product/productQuantity"](props.product) === null
+        ? 0
+        : store.getters["Product/productQuantity"](props.product);
     });
 
     const imgUrl = (imagePath) => {
-    return '@/images/nigiri/'+imagePath;
-  }
+      return "@/images/nigiri/" + imagePath;
+    };
 
-    return { addToCart, removeFromCart, product_total,imgUrl };
+    return { addToCart, removeFromCart, product_total, imgUrl };
   },
 };
 </script>
@@ -40,29 +41,27 @@ export default {
 <template>
   <div class="card">
     <!-- <img :src="imgUrl(product.img_name)" alt="" /> -->
-    <img :src="require(`@/images/nigiri/${product.img_name}`)" alt="" />
+    <div class="img-box">
+      <img
+        :src="require(`@/images/${product.categary}/${product.img_name}`)"
+        alt=""
+      />
+    </div>
+
     <!-- <img src="@/images/nigiri/3.jpg" alt="" /> -->
     <!-- <img src="" alt="" /> -->
     <h3>{{ product.name }}</h3>
-    <h5 class="price">{{ product.price }}</h5>
+    <h5 class="price">{{ product.price }}元</h5>
     <div class="counter">
       <div class="minus" @click="removeFromCart">-</div>
-      <div class="count">{{ product_total }}</div>
+      <div class="count" v-if="product_total">{{ product_total }}</div>
+      <div class="count" v-if="!product_total">0</div>
       <div class="plus" @click="addToCart">+</div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-img {
-  width: 100%; /* or any custom size */
-  object-fit: contain;
-
-  // 暫時灰色底
-  // background-color: gray;
-  // height: 100px;
-}
-
 .card {
   text-align: center;
   width: 180px;
@@ -72,9 +71,22 @@ img {
   background-color: white;
   box-shadow: 0 0 5px gray;
 
+  .img-box {
+    img {
+      // width: 100%; /* or any custom size */
+      object-fit: contain;
+
+      // 暫時灰色底
+      // background-color: gray;
+      height: 130px;
+    }
+  }
+
   .counter {
     display: flex;
     justify-content: center;
+    gap: 10px;
+    padding: 10px;
   }
 }
 </style>

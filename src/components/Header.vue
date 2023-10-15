@@ -1,5 +1,11 @@
 <script>
-export default {};
+import { createStore } from "vuex";
+export default {
+  setup() {
+    const clear = () => {};
+    return {};
+  },
+};
 </script>
 
 <template>
@@ -7,14 +13,14 @@ export default {};
     <input type="checkbox" id="check" />
     <label for="check" class="checkbtn">
       <!-- explicit style -->
-      <font-awesome-icon style="color:#7a816e" :icon="['fas', 'bars']" />
+      <font-awesome-icon style="color: #7a816e" :icon="['fas', 'bars']" />
     </label>
     <label class="logo">彩·壽司</label>
     <ul>
-      <li><router-link to="/register">註冊</router-link></li>
-      <li><a href="#">會員資訊</a></li>
-      <li><router-link to="/cart">我的購物車</router-link></li>
-      <li><a href="#">MENU</a></li>
+      <li><router-link to="/">首頁</router-link></li>
+      <li><router-link to="/cart">購物車</router-link></li>
+      <li><router-link to="/product">點餐</router-link></li>
+      <li @click="clear"><router-link to="/login">登出</router-link></li>
     </ul>
   </nav>
 </template>
@@ -46,7 +52,6 @@ label.logo {
     padding-left: 50px;
   }
 }
-
 
 nav ul {
   float: right;
