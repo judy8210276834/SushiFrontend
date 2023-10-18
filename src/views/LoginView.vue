@@ -20,7 +20,7 @@ export default {
           statusShow.value = true;
           statusMsg.value = response.data.result.status;
           if (statusMsg.value == "登入成功。") {
-            location.href="/";
+            location.href="/home";
           }
         })
         .catch((error) => {
@@ -62,7 +62,7 @@ export default {
         <div class="control">
           <input class="submit" @click="handSubmit" value="登入" />
         </div>
-        <router-link to="/register" style="color: white">註冊</router-link>
+        <router-link to="/" style="color: white">註冊</router-link>
       </form>
     </div>
   </section>

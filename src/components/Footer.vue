@@ -17,7 +17,7 @@
       <div class="box">
         <div class="line"></div>
         <ul>
-          <li>台北市內湖區OO街</li>
+          <li>114台北市內湖區民權東路六段</li>
           <li>0987-654-321</li>
           <li>0800-1700</li>
         </ul>

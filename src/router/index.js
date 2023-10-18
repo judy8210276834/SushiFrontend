@@ -6,15 +6,16 @@ import ProductView from '../views/ProductView.vue'
 import CartView from '../views/CartView.vue'
 
 const routes = [
+  
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/register',
     name: 'register',
     component: RegisterView
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomeView
   },
   {
     path: '/login',

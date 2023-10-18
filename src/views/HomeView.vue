@@ -17,7 +17,7 @@ components: {
     Describe
   },
   setup() {
-    const img_url = 'banner.jpg';
+    const img_url = 'home/resturant.jpg';
     return {
       img_url
     }
@@ -49,6 +49,7 @@ components: {
   max-width: 980px;
   margin: 0 auto !important;
   float: none !important;
+  padding: 10px;
 }
 
 footer {

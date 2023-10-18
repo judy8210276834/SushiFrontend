@@ -23,7 +23,7 @@ export default {
   setup() {
     const food = reactive({ data: [] });
     const store = useStore();
-    const img_url = "banner.jpg";
+    const img_url = "banner1.jpg";
 
     const init = () => {
       // api資料
