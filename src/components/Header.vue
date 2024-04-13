@@ -2,8 +2,12 @@
 import { createStore } from "vuex";
 export default {
   setup() {
-    const clear = () => {};
-    return {};
+    const clear = () => {
+      localStorage.clear();
+    };
+    return {
+      clear
+    };
   },
 };
 </script>
@@ -34,7 +38,7 @@ export default {
 
 nav {
   background-color: rgba(255, 255, 255, 0.758);
-  height: 70px;
+  // height: 70px;
   width: 100%;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */

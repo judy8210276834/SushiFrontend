@@ -70,6 +70,7 @@ export default {
   border-radius: 5px;
   background-color: white;
   box-shadow: 0 0 5px gray;
+  font-size: 16px;
 
   .img-box {
     img {
@@ -87,6 +88,11 @@ export default {
     justify-content: center;
     gap: 10px;
     padding: 10px;
+
+    .minus,.plus{
+      cursor: pointer;
+      font-weight: 700;
+    }
   }
 }
 </style>

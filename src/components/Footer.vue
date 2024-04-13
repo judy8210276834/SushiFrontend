@@ -45,6 +45,7 @@ export default {};
   background-color: #313131;
   padding: 5%;
   display: flex;
+  margin-top: 300px;
 
   @media (max-width: 952px) {
     flex-wrap: wrap;

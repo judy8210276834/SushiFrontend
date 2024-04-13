@@ -50,6 +50,12 @@ export default {};
   margin-top: 40px;
   text-align: center;
   align-items: center;
+  color: #484848;
+  font-size: 16px;
+  letter-spacing:3px;
+
+  @media (max-width: 991px) { display: block; }
+  @media (max-width: 575px) { display: block; }
 }
 
 .container2 {
@@ -60,6 +66,12 @@ export default {};
   flex-direction: row-reverse;
   align-items: center;
   text-align: center;
+  color: #484848;
+  font-size: 16px;
+  letter-spacing:3px;
+
+  @media (max-width: 991px) { display: block; }
+  @media (max-width: 575px) { display: block; }
 }
 
 .container3 {
@@ -69,6 +81,12 @@ export default {};
   .text {
     padding: 50px;
   }
+  color: #484848;
+  font-size: 16px;
+  letter-spacing:3px;
+
+  @media (max-width: 991px) { display: block; }
+  @media (max-width: 575px) { display: block; }
 }
 
 img {

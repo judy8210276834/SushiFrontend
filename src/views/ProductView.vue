@@ -24,6 +24,7 @@ export default {
     const food = reactive({ data: [] });
     const store = useStore();
     const img_url = "banner1.jpg";
+    const page_name = "菜單";
 
     const init = () => {
       // api資料
@@ -55,7 +56,8 @@ export default {
       items,
       food,
       img_url,
-      changeTypeApi
+      changeTypeApi,
+      page_name
     };
   },
 };
@@ -65,7 +67,7 @@ export default {
   <Header />
   <Main :img_url="img_url" />
   <div class="container">
-    <Bread />
+    <Bread :page_name="page_name"/>
     <Category :changeTypeApi="changeTypeApi"/>
 
     <div class="product-cards-container">

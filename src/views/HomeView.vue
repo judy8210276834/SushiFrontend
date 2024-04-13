@@ -18,8 +18,10 @@ components: {
   },
   setup() {
     const img_url = 'home/resturant.jpg';
+    const page_name = '介紹';
     return {
-      img_url
+      img_url,
+      page_name
     }
   }
 }
@@ -29,7 +31,7 @@ components: {
   <Header />
   <Main :img_url="img_url" />
   <div class="container">
-    <Bread />
+    <Bread :page_name = "page_name" />
     <Describe />
   </div>
    <footer>

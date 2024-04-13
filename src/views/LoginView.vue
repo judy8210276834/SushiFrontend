@@ -128,6 +128,7 @@ h1 {
   opacity: 0.7;
   transform: opacity 0.3s ease;
   text-align: center;
+  cursor: pointer;
 }
 
 .submit:hover {

@@ -15,6 +15,7 @@ export default {
 
   setup() {
     const img_url = "banner.jpg";
+    const page_name = "購物車";
     // const cart = reactive({data:[]});
     const store = useStore();
     const num = ref(0);
@@ -28,11 +29,10 @@ export default {
       console.log(store.getters["Product/getCart"]);
       // console.log(store.getters);
       // console.log(store.getters.Product/cart);
-      num.value = (getCart.value.length > 0 ? 1 : 0);
-
+      num.value = getCart.value.length > 0 ? 1 : 0;
     });
 
-    return { img_url, getCart, num };
+    return { img_url, getCart, num, page_name };
   },
 };
 </script>
@@ -40,18 +40,18 @@ export default {
 <template>
   <Header />
   <div class="container">
-    <Bread />
-    <h3>我的購物車</h3>
-    <div v-if="!num">目前購物車是空的唷!</div>
-    <div v-if="num">
-      <div v-for="(item, idx) in getCart" :key="idx">
+    <Bread :page_name="page_name"/>
+    <!-- <h3>我的購物車</h3> -->
+    <div class="empty" v-if="!num">目前購物車是空的唷!</div>
+    <div v-if="num" >
+      <div v-for="(item, idx) in getCart" :key="idx" class="content">
         <div class="wrap">
           <img
             :src="require(`@/images/${item.categary}/${item.img_name}`)"
             alt=""
           />
           <div class="detail">
-            <h6>{{ item.name }}</h6>
+            <h6 style="font-weight: 800;">{{ item.name }}</h6>
             <h6>{{ item.price }} 元</h6>
             <h6>{{ item.quantity }} 份</h6>
           </div>
@@ -69,7 +69,22 @@ export default {
   max-width: 980px;
   margin: 70px auto 0;
   float: none !important;
-  text-align: center;
+  text-align: left;
+  color: #484848;
+  font-size: 18px;
+
+  @media (max-width: 991px) { padding: 0 20px; }
+  @media (max-width: 575px) { display: block; }
+
+  .content{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 300px;
+  }
+
+  .empty {
+    margin-top: 10px;
+    margin-bottom: 280px;
+  }
 
   h3 {
     color: #7a816e;
@@ -78,7 +93,7 @@ export default {
   .wrap {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 20px 0;
 
